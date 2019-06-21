@@ -1,0 +1,18 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: kudo-kafka-generator
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: kudo-kafka-generator
+      labels:
+        app: kudo-kafka-generator
+    spec:
+      containers:
+      - name: kudo-kafka-generator
+        image: mesosphere/flink-generator:0.1
+        command: ["/generator-linux"]
+        imagePullPolicy: Always
+        args: ["--broker", "192.168.15.11:9093"]

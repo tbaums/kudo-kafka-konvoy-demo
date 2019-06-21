@@ -1,17 +1,17 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
- name: transaction-consumer
+ name: kudo-kafka-consumer
 spec:
  replicas: 1
  template:
    metadata:
-     name: transaction-consumer
+     name: kudo-kafka-consumer
      labels:
-       app: transaction-consumer
+       app: kudo-kafka-consumer
    spec:
      containers:
-     - name: demo-consumer
+     - name: kudo-kafka-consumer
        image: tbaums/kudo-kafka-demo
        imagePullPolicy: Always
        env:
