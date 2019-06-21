@@ -1,0 +1,17 @@
+
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: kudo-flink-actor
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: kudo-flink-actor
+      labels:
+        app: kudo-flink-actor
+    spec:
+      containers:
+      - name: kudo-flink-actor
+        image: tbaums/kudo-flink-actor:latest
+        imagePullPolicy: Always
