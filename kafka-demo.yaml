@@ -1,0 +1,19 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+ name: transaction-consumer
+spec:
+ replicas: 1
+ template:
+   metadata:
+     name: transaction-consumer
+     labels:
+       app: transaction-consumer
+   spec:
+     containers:
+     - name: demo-consumer
+       image: tbaums/kudo-kafka-demo
+       imagePullPolicy: Always
+       env:
+        - name: BROKER_SERVICE
+          value: 192.168.15.11:9093
