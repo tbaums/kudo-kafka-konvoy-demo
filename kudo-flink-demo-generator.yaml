@@ -1,0 +1,19 @@
+    
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: kudo-flink-demo-generator
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: kudo-flink-demo-generator
+      labels:
+        app: kudo-flink-demo-generator
+    spec:
+      containers:
+      - name: kudo-flink-demo-generator
+        image: mesosphere/flink-generator:0.1
+        command: ["/generator-linux"]
+        imagePullPolicy: Always
+        args: ["--broker", "192.168.15.11:9093"]

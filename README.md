@@ -138,3 +138,6 @@ Message: b'2019-06-21T16:20:05Z;8;2;2603'
 Message: b'2019-06-21T16:20:09Z;0;1;9885'
 
 ```
+
+---
+_Special thanks to Alex Fernandes for his help!_
