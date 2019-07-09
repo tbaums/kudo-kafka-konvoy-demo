@@ -16,4 +16,4 @@ spec:
        imagePullPolicy: Always
        env:
         - name: BROKER_SERVICE
-          value: 192.168.15.11:9093
+          value: kafka-kafka-0.kafka-svc:9092
