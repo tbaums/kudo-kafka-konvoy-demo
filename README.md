@@ -26,63 +26,32 @@ brew tap kudobuilder/tap
 brew install kudo-cli
 ```
 
-## Step 3 - Launch Kafka Instance
+## Step 3 - Launch ZooKeeper
 
 ```
-kubectl kudo install kafka --all-dependencies
+kubectlkudo install zookeeper --instance=zk
 ```
 
-This will install both ZooKeeper and Kafka over the course of a few minutes.
-
-## Step 4 - Find Kafka endpoint
-
-```
-kubectl describe service kafka-svc
-```
+Use `kubectl get pods` to observe when all the ZK nodes are up and have STATUS `RUNNING`.
 
 
-Your output should look like the below:
+## Step 4 - Launch Kafka 
 
 ```
-» k describe service kafka-svc                                                
-Name:              kafka-svc
-Namespace:         default
-Labels:            app=kafka
-                   heritage=kudo
-                   instance=kafka
-                   phase=deploy-kafka
-                   plan=deploy
-                   planexecution=kafka-deploy-819232397
-                   step=deploy
-                   version=0.1.0
-Annotations:       <none>
-Selector:          app=kafka,heritage=kudo,instance=kafka,phase=deploy-kafka,plan=deploy,planexecution=kafka-deploy-819232397,step=deploy,version=0.1.0
-Type:              ClusterIP
-IP:                None
-Port:              server  9093/TCP
-TargetPort:        9093/TCP
-Endpoints:         192.168.15.11:9093
-Session Affinity:  None
-Events:            <none>
+kubectl kudo install kafka --instance=kafka --parameter KAFKA_ZOOKEEPER_URI=zk-zk-0.zk-hs:2181,zk-zk-1.zk-hs:2181,zk-zk-2.zk-hs:2181 --parameter KAFKA_ZOOKEEPER_PATH=/small -p BROKERS_COUNTER=3
 ```
 
+Use `kubectl get pods` to observe when all the Kafka brokers are up and have STATUS `RUNNING`.
 
-## Step 5 - Edit `kafka-demo-generator-kudo.yaml`
 
-Edit the `kafka-demo-generator-kudo.yaml` file to point to the endpoint you found in Step 4.
-
-## Step 6 - Edit `kafka-demo-consumer-kudo.yaml`
-
-Edite the `kafka-demo-consumer-kudo` file to point to the endpoint you found in Step 4.
-
-## Step 7 - Deploy Generator and Consumer
+## Step 5 - Deploy Generator and Consumer
 
 ```
 kubectl apply -f kafka-demo-generator-kudo.yaml
 kubectl apply -f kafka-demo-consumer-kudo.yaml
 ```
 
-## Step 8 - Observe Kafka message read/write
+## Step 6 - Observe Kafka message read/write
 
 
 Run `kubectl get pods` to find the pod ID of the pods for the generator and consumer service.
