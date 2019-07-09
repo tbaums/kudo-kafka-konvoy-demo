@@ -15,4 +15,4 @@ spec:
         image: mesosphere/flink-generator:0.1
         command: ["/generator-linux"]
         imagePullPolicy: Always
-        args: ["--broker", "192.168.15.11:9093"]
+        args: ["--broker", "kafka-kafka-0.kafka-svc:9092"]
