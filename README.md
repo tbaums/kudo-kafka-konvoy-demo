@@ -107,3 +107,19 @@ Message: b'2019-06-21T16:20:05Z;8;2;2603'
 Message: b'2019-06-21T16:20:09Z;0;1;9885'
 
 ```
+
+## Step 7 - Load Kafka Grafana dashboard
+
+Run the following command to enable Kafka metrics export:
+
+```
+k create -f https://raw.githubusercontent.com/kudobuilder/operators/master/repository/kafka/docs/v0.1/resources/service-monitor.yaml
+```
+
+Open Grafana from the Konvoy Ops Portal.
+
+On the left nav bar, hover over the "+" icon, and select "Import". 
+
+The JSON for the Kafka dashboard can be found ![here](https://github.com/kudobuilder/operators/blob/master/repository/kafka/docs/v0.1/resources/grafana-dashboard.json).
+
+
