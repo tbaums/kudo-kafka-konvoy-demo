@@ -113,7 +113,7 @@ Message: b'2019-06-21T16:20:09Z;0;1;9885'
 Run the following command to enable Kafka metrics export:
 
 ```
-k create -f https://raw.githubusercontent.com/kudobuilder/operators/master/repository/kafka/docs/v0.1/resources/service-monitor.yaml
+kubectl create -f https://raw.githubusercontent.com/kudobuilder/operators/master/repository/kafka/docs/v0.1/resources/service-monitor.yaml
 ```
 
 Open Grafana from the Konvoy Ops Portal.
