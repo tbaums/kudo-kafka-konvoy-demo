@@ -29,7 +29,7 @@ brew install kudo-cli
 ## Step 3 - Launch ZooKeeper
 
 ```
-kubectlkudo install zookeeper --instance=zk
+kubectl kudo install zookeeper --instance=zk
 ```
 
 Use `kubectl get pods` to observe when all the ZK nodes are up and have STATUS `RUNNING`.
