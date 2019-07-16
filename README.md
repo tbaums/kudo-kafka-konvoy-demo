@@ -38,7 +38,7 @@ Use `kubectl get pods` to observe when all the ZK nodes are up and have STATUS `
 ## Step 4 - Launch Kafka 
 
 ```
-kubectl kudo install kafka --instance=kafka --parameter KAFKA_ZOOKEEPER_URI=zk-zk-0.zk-hs:2181,zk-zk-1.zk-hs:2181,zk-zk-2.zk-hs:2181 --parameter KAFKA_ZOOKEEPER_PATH=/small -p BROKERS_COUNTER=3
+kubectl kudo install kafka --instance=kafka --parameter KAFKA_ZOOKEEPER_URI=zk-zookeeper-0.zk-hs:2181,zk-zookeeper-1.zk-hs:2181,zk-zookeeper-2.zk-hs:2181 --parameter KAFKA_ZOOKEEPER_PATH=/small -p BROKERS_COUNTER=3
 ```
 
 Use `kubectl get pods` to observe when all the Kafka brokers are up and have STATUS `RUNNING`.
